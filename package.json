@@ -3,7 +3,7 @@
   "name": "node-compiler",
   "description": "It could compile a multi-files node.js project into an executable binary",
   "license": "MIT",
-  "version": "1.2",
+  "version": "1.2.0",
   "contributors": [
     {
       "name": "Jixian Wang",

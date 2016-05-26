@@ -2,7 +2,7 @@
 
 var path = require('path'),
   fs = require('fs'),
-  nexe = require('../lib'),
+  compiler = require('../lib'),
   _log = require("../lib/log"),
   cli = require('yargs').
 usage('Usage: $0 -i [sources] -o [binary]').
@@ -25,7 +25,7 @@ options('r', {
 }).
 options('t', {
   alias: 'temp',
-  default: './tmp/nexe',
+  default: './tmp/compiler',
   description: 'The path to store node.js sources'
 }).
 options('f', {
@@ -51,6 +51,11 @@ options('p', {
   alias: 'python',
   description: 'Set path of python to use.',
   default: 'python'
+}).
+options('s', {
+  alias: 'strip',
+  description: 'Strip binary',
+  default: false
 }).
 options('F', {
   alias: 'framework',
@@ -81,8 +86,8 @@ function toAbsolute(pt) {
 }
 
 if (fs.lstatSync(argv.i).isDirectory()) {
-  opts = nexe.package(path.join(argv.i, "package.json"), argv);
-  nexe.compile(opts, function(error) {
+  opts = compiler.package(path.join(argv.i, "package.json"), argv);  
+  compiler.compile(opts, function(error) {
     if (error) {
       return console.log(error.message);
     }
@@ -91,7 +96,8 @@ if (fs.lstatSync(argv.i).isDirectory()) {
   /**
    * Call the core
    **/
-  nexe.compile({
+   console.log('here');
+  compiler.compile({
       input: require.resolve(toAbsolute(argv.i)),
       output: toAbsolute(argv.o),
       flags: argv.f,
