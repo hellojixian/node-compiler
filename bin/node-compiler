@@ -53,6 +53,11 @@ options('p', {
   default: 'python'
 }).
 options('s', {
+  alias: 'uglify',
+  description: 'uglify source code',
+  default: false
+}).
+options('u', {
   alias: 'strip',
   description: 'Strip binary',
   default: false
@@ -96,7 +101,6 @@ if (fs.lstatSync(argv.i).isDirectory()) {
   /**
    * Call the core
    **/
-   console.log('here');
   compiler.compile({
       input: require.resolve(toAbsolute(argv.i)),
       output: toAbsolute(argv.o),
