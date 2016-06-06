@@ -1,6 +1,6 @@
 {
   "author": "Jixian Wang <hellojixian@gmail.com>",
-  "name": "node-compiler",
+  "name": "node-compile",
   "description": "It could compile a multi-files node.js project into an executable binary",
   "license": "MIT",
   "version": "1.2.0",
